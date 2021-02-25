@@ -2,6 +2,9 @@
   <div>
     <nav class="nav">
       <div class="nav__left">
+        <div class="nav__hamburger">
+          <img :src="require('@/assets/menu.svg')">
+        </div>
         <div class="nav__logo">
           BOOKIFY
         </div>
@@ -121,9 +124,26 @@ body {
   padding: 0 64px;
 }
 
+@media (max-width: 1250px) {
+  .nav {
+    padding: 0 16px;
+  }
+}
+
 .nav__left {
   display: flex;
   align-items: center;
+}
+
+.nav__hamburger {
+  display: flex;
+  padding-right: 4px;
+}
+
+@media (min-width: 1250px) {
+  .nav__hamburger {
+    display: none;
+  }
 }
 
 .nav__logo {
@@ -134,6 +154,12 @@ body {
 
 .nav__items {
   display: flex;
+}
+
+@media (max-width: 1250px) {
+  .nav__items {
+    display: none;
+  }
 }
 
 .nav__item {
@@ -191,6 +217,12 @@ body {
 
 .nav-photo__username {
   font-size: 22px;
+}
+
+@media (max-width: 768px) {
+  .nav-photo__username {
+    display: none;
+  }
 }
 
 .nav-photo:hover {
