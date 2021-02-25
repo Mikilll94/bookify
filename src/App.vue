@@ -3,29 +3,29 @@
     <nav class="nav">
       <div class="nav__left">
         <div class="nav__logo">
-          Logo
+          BOOKIFY
         </div>
         <div class="nav__items">
           <div class="nav__item nav__item--active">
-            Dashboard
+            Pobyty
           </div>
           <div class="nav__item">
-            Team
+            Loty
           </div>
           <div class="nav__item">
-            Projects
+            Wynajem samochodów
           </div>
           <div class="nav__item">
-            Calendar
+            Atrakcje
           </div>
           <div class="nav__item">
-            Reports
+            Taksówki lotniskowe
           </div>
         </div>
       </div>
       <div class="nav-rest">
         <div class="nav-bell">
-          bell
+          <img :src="require('@/assets/notifications.svg')">
         </div>
         <div class="nav-photo-wrapper">
           <div
@@ -35,7 +35,11 @@
           >
             <img
               :src="require('@/assets/account_circle.svg')"
+              class="nav-photo__avatar"
             >
+            <div class="nav-photo__username">
+              Mikołaj
+            </div>
           </div>
           <transition name="dropdown">
             <div
@@ -44,13 +48,13 @@
               ref="photoDropdown"
             >
               <div class="nav-photo-dropdown__item">
-                Your profile
+                Twój profil
               </div>
               <div class="nav-photo-dropdown__item">
-                Settings
+                Ustawienia
               </div>
               <div class="nav-photo-dropdown__item">
-                Sign out
+                Wyloguj się
               </div>
             </div>
           </transition>
@@ -124,6 +128,8 @@ body {
 
 .nav__logo {
   margin-right: 48px;
+  font-size: 36px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .nav__items {
@@ -133,10 +139,7 @@ body {
 .nav__item {
   margin-right: 24px;
   color: #BEC3CB;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 0.375rem;
 }
 
@@ -155,11 +158,16 @@ body {
 }
 
 .nav-bell {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  margin-right: 24px;
+  padding: 0.5rem 0.75rem;
+  margin-right: 16px;
+  cursor: pointer;
+  display: flex;
+}
+
+.nav-bell:hover {
+  background-color: rgba(55, 65, 81);
+  border-radius: 2rem;
+  cursor: pointer;
 }
 
 .nav-photo-wrapper {
@@ -168,6 +176,21 @@ body {
 
 .nav-photo {
   display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+}
+
+.nav-photo:hover {
+  background-color: rgba(55, 65, 81);
+  cursor: pointer;
+}
+
+.nav-photo__avatar {
+  margin-right: 4px;
+}
+
+.nav-photo__username {
+  font-size: 22px;
 }
 
 .nav-photo:hover {
@@ -176,8 +199,9 @@ body {
 
 .nav-photo-dropdown {
   position: absolute;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   color: black;
-  margin-top: 0.5rem;
   right: 0;
   width: 12rem;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -189,6 +213,11 @@ body {
 .nav-photo-dropdown__item {
   padding: 1rem 1rem;
   font-size: 0.875rem;
+}
+
+.nav-photo-dropdown__item:hover {
+  background-color: #F0F1F4;
+  cursor: pointer;
 }
 
 .dropdown-enter-active, .dropdown-leave-active {
