@@ -2,7 +2,10 @@
   <div>
     <nav class="nav">
       <div class="nav__left">
-        <div class="nav__hamburger">
+        <div
+          class="nav__hamburger"
+          @click="openSidepanel"
+        >
           <img :src="require('@/assets/menu.svg')">
         </div>
         <div class="nav__logo">
@@ -64,6 +67,45 @@
         </div>
       </div>
     </nav>
+    <div
+      class="sidepanel"
+      :class="{ 'sidepanel--open': sidepanelOpened }"
+    >
+      <div class="sidepanel__content">
+        <div class="sidepanel-logo">
+          <div class="sidepanel-title">
+            BOOKIFY
+          </div>
+          <div
+            class="sidepanel-close"
+            @click="closeSidepanel"
+          >
+            <img
+              width="36"
+              height="36"
+              :src="require('@/assets/close.svg')"
+            >
+          </div>
+        </div>
+        <div class="sidepanel__items">
+          <div class="sidepanel__item sidepanel__item--active">
+            Pobyty
+          </div>
+          <div class="sidepanel__item">
+            Loty
+          </div>
+          <div class="sidepanel__item">
+            Wynajem samochodów
+          </div>
+          <div class="sidepanel__item">
+            Atrakcje
+          </div>
+          <div class="sidepanel__item">
+            Taksówki lotniskowe
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -74,6 +116,7 @@ export default Vue.extend({
   data() {
     return {
       photoDropdownOpen: false,
+      sidepanelOpened: false,
     };
   },
   mounted() {
@@ -87,6 +130,14 @@ export default Vue.extend({
         this.photoDropdownOpen = false;
       }
     });
+  },
+  methods: {
+    openSidepanel() {
+      this.sidepanelOpened = true;
+    },
+    closeSidepanel() {
+      this.sidepanelOpened = false;
+    },
   },
 });
 </script>
@@ -259,5 +310,61 @@ body {
 .dropdown-enter, .dropdown-leave-to {
   opacity: 0;
   transform: scale(0.95);
+}
+
+.sidepanel {
+  width: 0;
+  top: 0;
+  position: fixed;
+  z-index: 1;
+  height: 100vh;
+  overflow-x: hidden;
+  transition: 0.5s;
+  background-color: #1f2937;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+  rgba(0, 0, 0, 0.12) 0px -12px 30px,
+  rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+  rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.sidepanel--open {
+  width: 240px;
+  border-right: 1px solid white
+}
+
+.sidepanel__content {
+  padding-left: 24px;
+  padding-right: 12px;
+}
+
+.sidepanel-logo {
+  margin-top: 12px;
+  margin-bottom: 36px;
+  font-size: 36px;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  align-items: center;
+}
+
+.sidepanel__items {
+  margin-top: 12px;
+  color: #BEC3CB;
+}
+
+.sidepanel__item {
+  margin-bottom: 24px;
+}
+
+.sidepanel__item--active {
+  color: #FFFFFF;
+}
+
+.sidepanel-close {
+  display: flex;
+}
+
+.sidepanel-title {
+  margin-right: 16px;
 }
 </style>
