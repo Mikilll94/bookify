@@ -159,6 +159,7 @@ html, body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  min-width: fit-content;
 }
 
 body {
@@ -314,12 +315,13 @@ body {
 
 .sidepanel {
   width: 0;
+  height: 100vh;
   top: 0;
   position: fixed;
   z-index: 1;
   height: 100vh;
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: width 0.5s;
   background-color: #1f2937;
   color: white;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
@@ -330,7 +332,7 @@ body {
 
 .sidepanel--open {
   width: 240px;
-  border-right: 1px solid white
+  border-right: 1px solid white;
 }
 
 .sidepanel__content {
@@ -350,6 +352,7 @@ body {
 .sidepanel__items {
   margin-top: 12px;
   color: #BEC3CB;
+  white-space: nowrap;
 }
 
 .sidepanel__item {
