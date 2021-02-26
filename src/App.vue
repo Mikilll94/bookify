@@ -4,24 +4,11 @@
     <SidePanel />
     <main class="main">
       <div class="card-list">
-        <article
+        <AccommodationCard
           v-for="accomodation in accommodations"
-          class="card-list__item card-item"
+          :accommodation="accomodation"
           :key="accomodation.id"
-        >
-          <div class="card-item__image">
-            <img
-              class="card-image"
-              :src="require(`@/assets/accommodations/${accomodation.image}`)"
-            >
-          </div>
-          <header class="card-item__header">
-            {{ accomodation.name }}
-          </header>
-          <footer class="card-item__footer">
-            {{ accomodation.description }}
-          </footer>
-        </article>
+        />
       </div>
     </main>
   </div>
@@ -31,13 +18,8 @@
 import Vue from 'vue';
 import NavBar from '@/layout/NavBar.vue';
 import SidePanel from '@/layout/SidePanel.vue';
-
-interface Accommodation {
-  id: number;
-  name: string;
-  image: string;
-  description: string;
-}
+import AccommodationCard from '@/components/AccommodationCard.vue';
+import { Accommodation } from '@/models/Accommodation';
 
 const ACCOMMODATIONS: Accommodation[] = [
   {
@@ -76,6 +58,7 @@ export default Vue.extend({
   components: {
     NavBar,
     SidePanel,
+    AccommodationCard,
   },
   data() {
     return {
@@ -127,33 +110,5 @@ body {
   cursor: pointer;
   transform: scale(1.01);
   filter: brightness(1.2);
-}
-
-.card-item__image {
-  width: 100%;
-}
-
-@media (min-width: 1043px) {
-  .card-image {
-    height: 225px;
-  }
-}
-
-@media (min-width: 711px) {
-  .card-image {
-    height: 300px;
-  }
-}
-
-.card-item__header {
-  padding: 1rem 1rem 0.5rem 1rem;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.card-item__footer {
-  padding: 0.5rem 1rem 1rem 1rem;
-  color: #8B8E9A;
-  font-size: 16px;
 }
 </style>
