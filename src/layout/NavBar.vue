@@ -108,7 +108,7 @@ export default Vue.extend({
   padding: 0 64px;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1249px) {
   .nav {
     padding: 0 16px;
   }
@@ -152,7 +152,7 @@ export default Vue.extend({
   display: flex;
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1249px) {
   .nav-primary__list {
     display: none;
   }
@@ -177,6 +177,12 @@ export default Vue.extend({
 .nav-secondary {
   display: flex;
   align-items: center;
+
+  @media (max-width: 710px) {
+    & {
+      display: none;
+    }
+  }
 }
 
 .nav-bell {

@@ -50,7 +50,6 @@ html, body {
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   line-height: 1.5;
-  min-width: fit-content;
 }
 
 body {
@@ -62,10 +61,16 @@ body {
   margin: 0 auto;
   max-width: 1320px;
 
-  @media (max-width: 710px) {
+  @media (max-width: 709px) {
     & {
       padding-top: 2rem;
       padding-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 349px) {
+    & {
+      padding: 1rem;
     }
   }
 }
@@ -74,5 +79,11 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 2rem;
+
+  @media (max-width: 349px) {
+    & {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
 }
 </style>
