@@ -123,6 +123,12 @@ body {
   overflow: hidden;
 }
 
+.card-list__item:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+  filter: brightness(1.2);
+}
+
 .card-item__image {
   width: 100%;
 }
