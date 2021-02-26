@@ -124,6 +124,12 @@ export default Vue.extend({
   padding-right: 4px;
 }
 
+.nav-hamburger:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
 @media (min-width: 1250px) {
   .nav-hamburger {
     display: none;
@@ -134,6 +140,7 @@ export default Vue.extend({
   margin-right: 48px;
   font-size: 36px;
   font-family: 'Courier New', Courier, monospace;
+  line-height: 0.2;
 }
 
 .nav-primary__list {

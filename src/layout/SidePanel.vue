@@ -72,16 +72,16 @@ export default Vue.extend({
 
 .sidepanel--open {
   width: 240px;
-  border-right: 1px solid white;
+  border-right: 1px solid #7b8590;
 }
 
 .sidepanel__content {
-  padding-left: 24px;
+  padding-left: 16px;
   padding-right: 12px;
 }
 
 .sidepanel-logo {
-  margin-top: 12px;
+  margin-top: 8px;
   margin-bottom: 36px;
   font-size: 36px;
   font-family: 'Courier New', Courier, monospace;
@@ -96,7 +96,13 @@ export default Vue.extend({
 }
 
 .sidepanel__item {
-  margin-bottom: 24px;
+  padding: 12px 8px;
+  // margin-bottom: 24px;
+}
+
+.sidepanel__item:hover {
+  background-color: rgba(55, 65, 81);
+  cursor: pointer;
 }
 
 .sidepanel__item--active {
@@ -105,6 +111,13 @@ export default Vue.extend({
 
 .sidepanel-close {
   display: flex;
+  margin-left: 8px;
+}
+
+.sidepanel-close:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .sidepanel-title {
