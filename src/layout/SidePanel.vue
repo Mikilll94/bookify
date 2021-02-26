@@ -4,7 +4,7 @@
     :class="{ 'sidepanel--open': $store.state.sidePanelOpened }"
   >
     <div class="sidepanel__content">
-      <div class="sidepanel-logo">
+      <div class="sidepanel-header">
         <div class="sidepanel-title">
           BOOKIFY
         </div>
@@ -19,20 +19,20 @@
           >
         </div>
       </div>
-      <div class="sidepanel__items">
-        <div class="sidepanel__item sidepanel__item--active">
+      <div class="sidepanel-list">
+        <div class="sidepanel-list__item sidepanel-list__item--active">
           Pobyty
         </div>
-        <div class="sidepanel__item">
+        <div class="sidepanel-list__item">
           Loty
         </div>
-        <div class="sidepanel__item">
+        <div class="sidepanel-list__item">
           Wynajem samochodów
         </div>
-        <div class="sidepanel__item">
+        <div class="sidepanel-list__item">
           Atrakcje
         </div>
-        <div class="sidepanel__item">
+        <div class="sidepanel-list__item">
           Taksówki lotniskowe
         </div>
       </div>
@@ -55,32 +55,31 @@ export default Vue.extend({
 <style lang="scss" scoped>
 .sidepanel {
   width: 0;
-  height: 100vh;
+  height: 100%;
   top: 0;
   position: fixed;
   z-index: 1;
-  height: 100vh;
   overflow-x: hidden;
   transition: width 0.5s;
   background-color: #1f2937;
   color: white;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-  rgba(0, 0, 0, 0.12) 0px -12px 30px,
-  rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
-  rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    rgba(0, 0, 0, 0.12) 0px -12px 30px,
+    rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px,
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  &--open {
+    width: 240px;
+    border-right: 1px solid #7b8590;
+  }
+
+  &__content {
+    padding-left: 16px;
+    padding-right: 12px;
+  }
 }
 
-.sidepanel--open {
-  width: 240px;
-  border-right: 1px solid #7b8590;
-}
-
-.sidepanel__content {
-  padding-left: 16px;
-  padding-right: 12px;
-}
-
-.sidepanel-logo {
+.sidepanel-header {
   margin-top: 8px;
   margin-bottom: 36px;
   font-size: 36px;
@@ -89,35 +88,34 @@ export default Vue.extend({
   align-items: center;
 }
 
-.sidepanel__items {
+.sidepanel-list {
   margin-top: 12px;
   color: #BEC3CB;
   white-space: nowrap;
-}
 
-.sidepanel__item {
-  padding: 12px 8px;
-  // margin-bottom: 24px;
-}
+  &__item {
+    padding: 12px 8px;
 
-.sidepanel__item:hover {
-  background-color: rgba(55, 65, 81);
-  cursor: pointer;
-}
+    &:hover {
+      background-color: rgba(55, 65, 81);
+      cursor: pointer;
+    }
 
-.sidepanel__item--active {
-  color: #FFFFFF;
+    &--active {
+      color: #FFFFFF;
+    }
+  }
 }
 
 .sidepanel-close {
   display: flex;
   margin-left: 8px;
-}
 
-.sidepanel-close:hover {
-  opacity: 0.8;
-  transform: scale(1.1);
-  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+    cursor: pointer;
+  }
 }
 
 .sidepanel-title {

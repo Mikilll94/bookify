@@ -34,7 +34,7 @@
       </div>
       <div class="nav-user-wrapper">
         <div
-          @click="userDropdownOpen = true"
+          @click="userDropdownOpen = !userDropdownOpen"
           ref="navUser"
           class="nav-user"
         >
@@ -141,6 +141,11 @@ export default Vue.extend({
   font-size: 36px;
   font-family: 'Courier New', Courier, monospace;
   line-height: 0.2;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 }
 
 .nav-primary__list {
@@ -158,15 +163,15 @@ export default Vue.extend({
   color: #BEC3CB;
   padding: 0.5rem 0.75rem;
   border-radius: 0.375rem;
-}
 
-.nav-primary__item:hover {
-  background-color: rgba(55, 65, 81);
-  cursor: pointer;
-}
+  &:hover {
+    background-color: rgba(55, 65, 81);
+    cursor: pointer;
+  }
 
-.nav-primary__item--active {
-  color: #FFFFFF;
+  &--active {
+    color: #FFFFFF;
+  }
 }
 
 .nav-secondary {
@@ -176,15 +181,15 @@ export default Vue.extend({
 
 .nav-bell {
   padding: 0.5rem 0.75rem;
-  margin-right: 16px;
+  margin-right: 8px;
   cursor: pointer;
   display: flex;
-}
 
-.nav-bell:hover {
-  background-color: rgba(55, 65, 81);
-  border-radius: 2rem;
-  cursor: pointer;
+  &:hover {
+    background-color: rgba(55, 65, 81);
+    border-radius: 2rem;
+    cursor: pointer;
+  }
 }
 
 .nav-user-wrapper {
@@ -195,24 +200,19 @@ export default Vue.extend({
   display: flex;
   align-items: center;
   padding: 0.5rem 0.75rem;
-}
 
-.nav-user:hover {
-  background-color: rgba(55, 65, 81);
-  cursor: pointer;
-}
+  &:hover {
+    background-color: rgba(55, 65, 81);
+    cursor: pointer;
+  }
 
-.nav-user__avatar {
-  margin-right: 4px;
-}
+  &__avatar {
+    margin-right: 4px;
+  }
 
-.nav-user__username {
-  font-size: 22px;
-}
-
-@media (max-width: 768px) {
-  .nav-user__username {
-    display: none;
+  &__username {
+    font-size: 22px;
+    letter-spacing: 1px;
   }
 }
 
@@ -227,16 +227,16 @@ export default Vue.extend({
   border-radius: 0.375rem;
   background-color: white;
   transform-origin: top right;
-}
 
-.nav-user-dropdown__item {
-  padding: 1rem 1rem;
-  font-size: 0.875rem;
-}
+  &__item {
+    padding: 1rem 1rem;
+    font-size: 16px;
 
-.nav-user-dropdown__item:hover {
-  background-color: #F0F1F4;
-  cursor: pointer;
+    &:hover {
+      background-color: #F0F1F4;
+      cursor: pointer;
+    }
+  }
 }
 
 .dropdown-enter-active, .dropdown-leave-active {
@@ -247,5 +247,4 @@ export default Vue.extend({
   opacity: 0;
   transform: scale(0.95);
 }
-
 </style>
