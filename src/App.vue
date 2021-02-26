@@ -4,44 +4,22 @@
     <SidePanel />
     <main class="main">
       <div class="card-list">
-        <article class="card-list__item card-item">
-          <img class="card-item__image" :src="require('@/assets/accommodations/gorski-klimat.jpg')">
-          <header class="card-item__header">Górski Klimat</header>
+        <article
+          v-for="accomodation in accommodations"
+          class="card-list__item card-item"
+          :key="accomodation.id"
+        >
+          <div class="card-item__image">
+            <img
+              class="card-image"
+              :src="require(`@/assets/accommodations/${accomodation.image}`)"
+            >
+          </div>
+          <header class="card-item__header">
+            {{ accomodation.name }}
+          </header>
           <footer class="card-item__footer">
-            <!-- eslint-disable-next-line max-len -->
-            Witamy w miejscu z którego nie będziesz chciał wrócić !Apartamenty Górski Klimat to kameralny obiekt...
-          </footer>
-        </article>
-        <article class="card-list__item">
-          <img class="card-item__image" :src="require('@/assets/accommodations/gorski-klimat.jpg')">
-          <header class="card-item__header">Górski Klimat</header>
-          <footer class="card-item__footer">
-            <!-- eslint-disable-next-line max-len -->
-            Witamy w miejscu z którego nie będziesz chciał wrócić !Apartamenty Górski Klimat to kameralny obiekt...
-          </footer>
-        </article>
-        <article class="card-list__item">
-          <img class="card-item__image" :src="require('@/assets/accommodations/gorski-klimat.jpg')">
-          <header class="card-item__header">Górski Klimat</header>
-          <footer class="card-item__footer">
-            <!-- eslint-disable-next-line max-len -->
-            Witamy w miejscu z którego nie będziesz chciał wrócić !Apartamenty Górski Klimat to kameralny obiekt...
-          </footer>
-        </article>
-        <article class="card-list__item">
-          <img class="card-item__image" :src="require('@/assets/accommodations/gorski-klimat.jpg')">
-          <header class="card-item__header">Górski Klimat</header>
-          <footer class="card-item__footer">
-            <!-- eslint-disable-next-line max-len -->
-            Witamy w miejscu z którego nie będziesz chciał wrócić !Apartamenty Górski Klimat to kameralny obiekt...
-          </footer>
-        </article>
-        <article class="card-list__item">
-          <img class="card-item__image" :src="require('@/assets/accommodations/gorski-klimat.jpg')">
-          <header class="card-item__header">Górski Klimat</header>
-          <footer class="card-item__footer">
-            <!-- eslint-disable-next-line max-len -->
-            Witamy w miejscu z którego nie będziesz chciał wrócić !Apartamenty Górski Klimat to kameralny obiekt...
+            {{ accomodation.description }}
           </footer>
         </article>
       </div>
@@ -54,10 +32,55 @@ import Vue from 'vue';
 import NavBar from '@/layout/NavBar.vue';
 import SidePanel from '@/layout/SidePanel.vue';
 
+interface Accommodation {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+}
+
+const ACCOMMODATIONS: Accommodation[] = [
+  {
+    id: 1,
+    name: 'Górski Klimat',
+    image: 'gorski-klimat.jpg',
+    description: 'Witamy w miejscu z którego nie będziesz chciał wrócić! Apartamenty Górski Klimat to kameralny obiekt...',
+  },
+  {
+    id: 2,
+    name: 'Hotel *** BIATHLON Sport & SPA',
+    image: 'hotel-biathlon-sport-spa.jpg',
+    description: 'Hotel *** BIATHLON w Jakuszycach położony jest w malowniczej okolicy, w pobliżu szlaków pieszych i...',
+  },
+  {
+    id: 3,
+    name: 'KRISTINA SPA',
+    image: 'kristina-spa.jpg',
+    description: 'Jeżeli szukają Państwo miejsca, aby spokojnie wypocząć zapraszamy do naszej Willi, położonej w malowniczej...',
+  },
+  {
+    id: 4,
+    name: 'Pensjonat MAGDALENA',
+    image: 'pensjonat-magdalena.jpg',
+    description: 'Regulamin rezerwacji w Pensjonacie Magdalena 58-580 Szklarska Poręba ul. Oficerska 2 Pensjonat Magdalena...',
+  },
+  {
+    id: 5,
+    name: 'Pokoje gościnne EWA',
+    image: 'pokoje-ewa.jpg',
+    description: 'Mamy zaszczyt przywitać Państwa w Pokojach Gościnnych Ewa w Szklarskiej Porębie - jednym z najpiękniejszych...',
+  },
+];
+
 export default Vue.extend({
   components: {
     NavBar,
     SidePanel,
+  },
+  data() {
+    return {
+      accommodations: ACCOMMODATIONS,
+    };
   },
 });
 </script>
@@ -102,6 +125,18 @@ body {
 
 .card-item__image {
   width: 100%;
+}
+
+@media (min-width: 1043px) {
+  .card-image {
+    height: 225px;
+  }
+}
+
+@media (min-width: 711px) {
+  .card-image {
+    height: 300px;
+  }
 }
 
 .card-item__header {
