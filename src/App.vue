@@ -1,65 +1,65 @@
 <template>
   <div>
     <nav class="nav">
-      <div class="nav__left">
+      <div class="nav-primary">
         <div
-          class="nav__hamburger"
+          class="nav-hamburger"
           @click="openSidepanel"
         >
           <img :src="require('@/assets/menu.svg')">
         </div>
-        <div class="nav__logo">
+        <div class="nav-logo">
           BOOKIFY
         </div>
-        <div class="nav__items">
-          <div class="nav__item nav__item--active">
+        <div class="nav-primary__list">
+          <div class="nav-primary__item nav-primary__item--active">
             Pobyty
           </div>
-          <div class="nav__item">
+          <div class="nav-primary__item">
             Loty
           </div>
-          <div class="nav__item">
+          <div class="nav-primary__item">
             Wynajem samochodów
           </div>
-          <div class="nav__item">
+          <div class="nav-primary__item">
             Atrakcje
           </div>
-          <div class="nav__item">
+          <div class="nav-primary__item">
             Taksówki lotniskowe
           </div>
         </div>
       </div>
-      <div class="nav-rest">
+      <div class="nav-secondary">
         <div class="nav-bell">
           <img :src="require('@/assets/notifications.svg')">
         </div>
-        <div class="nav-photo-wrapper">
+        <div class="nav-user-wrapper">
           <div
-            @click="photoDropdownOpen = true"
-            ref="navPhoto"
-            class="nav-photo"
+            @click="userDropdownOpen = true"
+            ref="navUser"
+            class="nav-user"
           >
             <img
               :src="require('@/assets/account_circle.svg')"
-              class="nav-photo__avatar"
+              class="nav-user__avatar"
             >
-            <div class="nav-photo__username">
+            <div class="nav-user__username">
               Mikołaj
             </div>
           </div>
           <transition name="dropdown">
             <div
-              v-show="photoDropdownOpen"
-              class="nav-photo-dropdown"
-              ref="photoDropdown"
+              v-show="userDropdownOpen"
+              class="nav-user-dropdown"
+              ref="navUserDropdown"
             >
-              <div class="nav-photo-dropdown__item">
+              <div class="nav-user-dropdown__item">
                 Twój profil
               </div>
-              <div class="nav-photo-dropdown__item">
+              <div class="nav-user-dropdown__item">
                 Ustawienia
               </div>
-              <div class="nav-photo-dropdown__item">
+              <div class="nav-user-dropdown__item">
                 Wyloguj się
               </div>
             </div>
@@ -115,19 +115,19 @@ import Vue from 'vue';
 export default Vue.extend({
   data() {
     return {
-      photoDropdownOpen: false,
+      userDropdownOpen: false,
       sidepanelOpened: false,
     };
   },
   mounted() {
     document.body.addEventListener('click', (e: Event) => {
-      const navPhotoRef = this.$refs.navPhoto as HTMLElement;
-      const photoDropdownRef = this.$refs.photoDropdown as HTMLElement;
+      const navUserRef = this.$refs.navUser as HTMLElement;
+      const navUserDropdownRef = this.$refs.navUserDropdown as HTMLElement;
 
-      if (e.target !== this.$refs.navPhoto && e.target !== this.$refs.photoDropdown
-        && !navPhotoRef.contains(e.target as Node | null)
-        && !photoDropdownRef.contains(e.target as Node | null)) {
-        this.photoDropdownOpen = false;
+      if (e.target !== navUserRef && e.target !== navUserDropdownRef
+        && !navUserRef.contains(e.target as Node | null)
+        && !navUserDropdownRef.contains(e.target as Node | null)) {
+        this.userDropdownOpen = false;
       }
     });
   },
@@ -182,55 +182,55 @@ body {
   }
 }
 
-.nav__left {
+.nav-primary {
   display: flex;
   align-items: center;
 }
 
-.nav__hamburger {
+.nav-hamburger {
   display: flex;
   padding-right: 4px;
 }
 
 @media (min-width: 1250px) {
-  .nav__hamburger {
+  .nav-hamburger {
     display: none;
   }
 }
 
-.nav__logo {
+.nav-logo {
   margin-right: 48px;
   font-size: 36px;
   font-family: 'Courier New', Courier, monospace;
 }
 
-.nav__items {
+.nav-primary__list {
   display: flex;
 }
 
 @media (max-width: 1250px) {
-  .nav__items {
+  .nav-primary__list {
     display: none;
   }
 }
 
-.nav__item {
+.nav-primary__item {
   margin-right: 24px;
   color: #BEC3CB;
   padding: 0.5rem 0.75rem;
   border-radius: 0.375rem;
 }
 
-.nav__item:hover {
+.nav-primary__item:hover {
   background-color: rgba(55, 65, 81);
   cursor: pointer;
 }
 
-.nav__item--active {
+.nav-primary__item--active {
   color: #FFFFFF;
 }
 
-.nav-rest {
+.nav-secondary {
   display: flex;
   align-items: center;
 }
@@ -248,40 +248,36 @@ body {
   cursor: pointer;
 }
 
-.nav-photo-wrapper {
+.nav-user-wrapper {
   position: relative;
 }
 
-.nav-photo {
+.nav-user {
   display: flex;
   align-items: center;
   padding: 0.5rem 0.75rem;
 }
 
-.nav-photo:hover {
+.nav-user:hover {
   background-color: rgba(55, 65, 81);
   cursor: pointer;
 }
 
-.nav-photo__avatar {
+.nav-user__avatar {
   margin-right: 4px;
 }
 
-.nav-photo__username {
+.nav-user__username {
   font-size: 22px;
 }
 
 @media (max-width: 768px) {
-  .nav-photo__username {
+  .nav-user__username {
     display: none;
   }
 }
 
-.nav-photo:hover {
-  cursor: pointer;
-}
-
-.nav-photo-dropdown {
+.nav-user-dropdown {
   position: absolute;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -294,12 +290,12 @@ body {
   transform-origin: top right;
 }
 
-.nav-photo-dropdown__item {
+.nav-user-dropdown__item {
   padding: 1rem 1rem;
   font-size: 0.875rem;
 }
 
-.nav-photo-dropdown__item:hover {
+.nav-user-dropdown__item:hover {
   background-color: #F0F1F4;
   cursor: pointer;
 }
