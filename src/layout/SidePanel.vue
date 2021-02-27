@@ -182,11 +182,6 @@ export default Vue.extend({
   display: flex;
   align-items: center;
 
-  &:hover {
-    background-color: rgba(55, 65, 81);
-    cursor: pointer;
-  }
-
   &__avatar {
     margin-right: 4px;
   }
@@ -199,5 +194,11 @@ export default Vue.extend({
 
 .sidepanel-bell {
   display: flex;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
 }
 </style>

@@ -134,12 +134,12 @@ export default Vue.extend({
 .nav-hamburger {
   display: flex;
   padding-right: 4px;
-}
 
-.nav-hamburger:hover {
-  cursor: pointer;
-  opacity: 0.8;
-  transform: scale(1.1);
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
 }
 
 @media (min-width: 1250px) {
