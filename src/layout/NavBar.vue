@@ -1,5 +1,8 @@
 <template>
-  <nav class="nav">
+  <nav
+    class="nav"
+    @click.self="closeSidePanel"
+  >
     <div class="nav-primary">
       <div
         class="nav-hamburger"
@@ -92,6 +95,11 @@ export default Vue.extend({
   methods: {
     openSidepanel() {
       this.$store.commit('OPEN_SIDEPANEL');
+    },
+    closeSidePanel() {
+      if (this.$store.state.sidePanelOpened) {
+        this.$store.commit('CLOSE_SIDEPANEL');
+      }
     },
   },
 });

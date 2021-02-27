@@ -2,7 +2,10 @@
   <div>
     <NavBar />
     <SidePanel />
-    <main class="main">
+    <main
+      class="main"
+      @click="closeSidePanel"
+    >
       <div class="card-list">
         <AccommodationCard
           v-for="accomodation in accommodations"
@@ -32,6 +35,13 @@ export default Vue.extend({
     return {
       accommodations: null as Accommodation[] | null,
     };
+  },
+  methods: {
+    closeSidePanel() {
+      if (this.$store.state.sidePanelOpened) {
+        this.$store.commit('CLOSE_SIDEPANEL');
+      }
+    },
   },
   async created() {
     this.accommodations = await AccommodationService.getAccommodations();
