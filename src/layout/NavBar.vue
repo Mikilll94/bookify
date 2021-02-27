@@ -81,7 +81,13 @@ export default Vue.extend({
     };
   },
   mounted() {
-    document.body.addEventListener('click', (e: Event) => {
+    document.body.addEventListener('click', this.handleClickOutsidePopup);
+  },
+  beforeDestroy() {
+    document.body.removeEventListener('click', this.handleClickOutsidePopup);
+  },
+  methods: {
+    handleClickOutsidePopup(e: Event) {
       const navUserRef = this.$refs.navUser as HTMLElement;
       const navUserDropdownRef = this.$refs.navUserDropdown as HTMLElement;
 
@@ -90,9 +96,7 @@ export default Vue.extend({
         && !navUserDropdownRef.contains(e.target as Node | null)) {
         this.userDropdownOpen = false;
       }
-    });
-  },
-  methods: {
+    },
     openSidepanel() {
       this.$store.commit('OPEN_SIDEPANEL');
     },
