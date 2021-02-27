@@ -67,7 +67,7 @@ export default Vue.extend({
   }
 }
 
-@media (min-width: 710px) {
+@media (min-width: 696px) {
   .card-img {
     height: 300px;
   }

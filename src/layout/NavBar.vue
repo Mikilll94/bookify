@@ -190,7 +190,7 @@ export default Vue.extend({
   display: flex;
   align-items: center;
 
-  @media (max-width: 710px) {
+  @media (max-width: 695px) {
     & {
       display: none;
     }

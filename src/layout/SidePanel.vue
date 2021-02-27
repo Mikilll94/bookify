@@ -162,7 +162,7 @@ export default Vue.extend({
   }
 }
 
-@media (min-width: 711px) {
+@media (min-width: 696px) {
   .sidepanel-section {
     display: none;
   }

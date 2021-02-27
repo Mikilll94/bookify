@@ -71,7 +71,7 @@ body {
   margin: 0 auto;
   max-width: 1320px;
 
-  @media (max-width: 709px) {
+  @media (max-width: 695px) {
     & {
       padding-top: 2rem;
       padding-bottom: 2rem;
